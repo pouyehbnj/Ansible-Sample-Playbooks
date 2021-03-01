@@ -1,0 +1,8 @@
+# - hosts: all
+
+#   tasks:
+    - name: Set Nameserver
+      lineinfile:
+        path: /etc/resolv.conf
+        line: 'nameserver 178.22.122.100'
+        insertbefore: BOF

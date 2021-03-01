@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: true
+
+  tasks:
+    - name: Set Nameserver
+      include : ../dns/dns.yml
+
+    - name : Install Docker on Ubuntu
+      include : ./docker-ubuntu.yml
+      when:
+      - ansible_facts['distribution'] == "Ubuntu"
+
+    - name : Install Docker on Centos
+      include : ./docker-centos.yml
+      when:
+      - ansible_facts['distribution'] == "CentOS"
