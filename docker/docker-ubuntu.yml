@@ -27,6 +27,11 @@
       pip:
         name: docker
 
+    - name: Log into DockerHub
+      community.docker.docker_login:
+      username: pouyehbnj
+      password: pouyehbnj
+
     - name: Pull default Docker image
       docker_image:
         name: "{{ default_container_image }}"
