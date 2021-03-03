@@ -7,7 +7,7 @@
 
   tasks:
     - name: Set Nameserver
-      include : ./dns/dns.yml
+      include : ../dns/dns.yml
 
     - name : Install Docker on Ubuntu
       include : ./docker-ubuntu.yml
