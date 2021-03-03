@@ -28,7 +28,7 @@
         name: docker
 
     - name: Log into DockerHub
-      community.docker.docker_login:
+      docker_login:
        username: pouyehbnj
        password: pouyehbnj
 
