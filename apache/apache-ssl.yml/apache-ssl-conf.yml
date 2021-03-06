@@ -1,0 +1,26 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: true
+  vars_files:
+    - ./ssl-config-vars.yml
+  tasks:
+    - name: Create self-signed certificate, if configured.
+      command: >
+        openssl req -x509 -nodes -subj -days 365
+        -newkey rsa:4096 -sha256 -keyout {{ key }} -out {{ cert }}
+
+    - name: Write the apache default-ssl file
+      ansible.builtin.template:
+        src: ./default-ssl.j2
+        dest: /etc/sites-available/default-ssl.conf
+
+      notify:
+      - Restart apache
+
+  handlers:
+    - name: Restart apache
+      ansible.builtin.service:
+        name: apache2
+        state: restarted
+        
