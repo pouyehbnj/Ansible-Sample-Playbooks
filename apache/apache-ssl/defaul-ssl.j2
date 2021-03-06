@@ -42,9 +42,9 @@
         #   SSL Engine Switch:
         #   Enable/Disable SSL for this virtual host.
         SSLEngine on
-        SSLCertificateFile /etc/ssl/crt/mysitename.crt
-        SSLCertificateKeyFile /etc/ssl/crt/mysitename.key
-        
+        SSLCertificateFile {{ certificates }}
+        SSLCertificateKeyFile {{ key }}
+
         #   A self-signed (snakeoil) certificate can be created by installing
         #   the ssl-cert package. See
         #   /usr/share/doc/apache2.2-common/README.Debian.gz for more info.

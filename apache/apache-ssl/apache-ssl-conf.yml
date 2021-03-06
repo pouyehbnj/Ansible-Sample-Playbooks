@@ -7,8 +7,8 @@
   tasks:
     - name: Create self-signed certificate, if configured.
       command: >
-        openssl req -x509 -nodes -subj -days 365
-        -newkey rsa:4096 -sha256 -keyout {{ key }} -out {{ cert }}
+        openssl req -x509 -nodes -subj -days 365 -newkey rsa:2048 -sha256 -keyout {{ key }} -out {{ cert }}
+        -subj "/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=examplebrooklyn.com"
 
     - name: Write the apache default-ssl file
       ansible.builtin.template:
