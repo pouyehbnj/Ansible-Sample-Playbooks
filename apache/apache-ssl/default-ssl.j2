@@ -42,7 +42,7 @@
         #   SSL Engine Switch:
         #   Enable/Disable SSL for this virtual host.
         SSLEngine on
-        SSLCertificateFile {{ certificates }}
+        SSLCertificateFile {{ cert }}
         SSLCertificateKeyFile {{ key }}
 
         #   A self-signed (snakeoil) certificate can be created by installing
