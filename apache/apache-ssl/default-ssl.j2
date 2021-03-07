@@ -1,4 +1,4 @@
-<IfModule mod_ssl.c>
+{# <IfModule mod_ssl.c>
 <VirtualHost _default_:443>
         ServerAdmin webmaster@localhost
 
@@ -171,4 +171,28 @@
         BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
 
 </VirtualHost>
-</IfModule>
+</IfModule> #}
+
+Listen 443
+
+<VirtualHost *:443>
+    ServerName  example.com
+    ServerAlias www.example.com
+
+    ServerAdmin admin@example.com
+
+    SSLCertificateFile    {{ cert }}
+    SSLCertificateKeyFile {{ key }}
+    SSLCACertificateFile  "/root/intermediate.crt"
+
+    LogLevel debug
+    ErrorLog  "logs/443_error_log"
+    CustomLog "logs/443_access_log" combined
+
+    DocumentRoot "/var/www/example.com/html"
+    DirectoryIndex index.html
+    <Directory "/var/www/example.com/html">
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
