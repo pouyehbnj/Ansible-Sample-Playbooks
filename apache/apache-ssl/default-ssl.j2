@@ -1,4 +1,4 @@
-{# <IfModule mod_ssl.c>
+<IfModule mod_ssl.c>
 <VirtualHost _default_:443>
         ServerAdmin webmaster@localhost
 
@@ -44,6 +44,7 @@
         SSLEngine on
         SSLCertificateFile {{ cert }}
         SSLCertificateKeyFile {{ key }}
+        SSLCACertificateFile  {{ dhparam }}
 
         #   A self-signed (snakeoil) certificate can be created by installing
         #   the ssl-cert package. See
@@ -171,9 +172,9 @@
         BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
 
 </VirtualHost>
-</IfModule> #}
+</IfModule>
 
-Listen 443
+{# Listen 443
 
 <VirtualHost *:443>
     ServerName  example.com
@@ -197,4 +198,4 @@ Listen 443
         AllowOverride None
         Require all granted
     </Directory>
-</VirtualHost>
+</VirtualHost> #}
