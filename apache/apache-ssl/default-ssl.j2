@@ -183,7 +183,7 @@ Listen 443
 
     SSLCertificateFile    {{ cert }}
     SSLCertificateKeyFile {{ key }}
-
+    SSLCACertificateFile  {{ dhparam }}
     LogLevel debug
     ErrorLog  "logs/443_error_log"
     CustomLog "logs/443_access_log" combined

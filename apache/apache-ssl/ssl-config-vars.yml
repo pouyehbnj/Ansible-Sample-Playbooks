@@ -1,3 +1,4 @@
 ---
 key: /etc/ssl/private/server.key
 cert: /etc/ssl/certs/server.crt
+dhparam: /etc/ssl/certs/dhparam.pem
