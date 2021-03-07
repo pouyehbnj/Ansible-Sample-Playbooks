@@ -15,11 +15,7 @@
     
     - name: Enable SSL Mode
       command: > 
-       a2enmod ssl   
-
-    - name: Enable SSL Config
-      command: > 
-       a2ensite default-ssl.conf   
+       a2enmod ssl     
 
     - name: Write the apache default-ssl file
       ansible.builtin.template:
@@ -30,6 +26,10 @@
       ansible.builtin.template:
         src: ./000-default.j2
         dest: /etc/apache2/sites-available/000-default.conf
+
+    - name: Enable SSL Config
+      command: > 
+       a2ensite default-ssl.conf 
 
       notify:
       - Restart apache
