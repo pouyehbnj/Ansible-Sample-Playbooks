@@ -9,9 +9,9 @@
       command: >
        openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout "{{key}}" -out "{{cert}}" -subj "/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=examplebrooklyn.com"
    
-    - name: Create Diffie-Hellman group
-      command: >
-       openssl dhparam -out "{{dhparam}}" 2048 
+    # - name: Create Diffie-Hellman group
+    #   command: >
+    #    openssl dhparam -out "{{dhparam}}" 2048 
     
     - name: Enable SSL Mode
       command: > 
@@ -31,13 +31,13 @@
       command: > 
        a2ensite default-ssl.conf 
 
-    - name: Set HostName
-      command: > 
-       echo "ServerName localhost" | tee /etc/apache2/conf-available/servername.conf
+    # - name: Set HostName
+    #   command: > 
+    #    echo "ServerName localhost" | tee /etc/apache2/conf-available/servername.conf
 
-    - name: Enable HostName Config
-      command: > 
-       a2enconf servername.conf
+    # - name: Enable HostName Config
+    #   command: > 
+    #    a2enconf servername.conf
 
       notify:
       - Restart apache
