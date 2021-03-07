@@ -33,11 +33,11 @@
 
     - name: Set HostName
       command: > 
-       echo "ServerName localhost" | sudo tee /etc/apache2/conf-available/servername.conf
+       echo "ServerName localhost" | tee /etc/apache2/conf-available/servername.conf
 
-    - name: Set HostName
+    - name: Enable HostName Config
       command: > 
-       sudo a2enconf servername
+       a2enconf servername
 
       notify:
       - Restart apache
