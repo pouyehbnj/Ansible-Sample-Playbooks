@@ -31,6 +31,14 @@
       command: > 
        a2ensite default-ssl.conf 
 
+    - name: Set HostName
+      command: > 
+       echo "ServerName localhost" | sudo tee /etc/apache2/conf-available/servername.conf
+
+    - name: Set HostName
+      command: > 
+       sudo a2enconf servername
+
       notify:
       - Restart apache
 
