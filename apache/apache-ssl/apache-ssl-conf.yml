@@ -11,15 +11,15 @@
    
     - name: Create Diffie-Hellman group
          command: >
-            openssl dhparam -out "{{dhparam}}" 2048 
+         openssl dhparam -out "{{dhparam}}" 2048 
     
     - name: Enable SSL Mode
       command: > 
-       a2enmod ssl   
+      a2enmod ssl   
 
     - name: Enable SSL Config
       command: > 
-       a2ensite default-ssl.conf   
+      a2ensite default-ssl.conf   
 
     - name: Write the apache default-ssl file
       ansible.builtin.template:
