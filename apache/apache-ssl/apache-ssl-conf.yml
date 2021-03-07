@@ -37,7 +37,7 @@
 
     - name: Enable HostName Config
       command: > 
-       a2enconf servername
+       a2enconf servername.conf
 
       notify:
       - Restart apache
